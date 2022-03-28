@@ -30,12 +30,29 @@ public class Game {
 	
 	private boolean hasAWinner() {
 		boolean ans = false;
+		int H_EMPTY = 32;
+		
+		int sum_case1 = (mat[0][0]+mat[0][1]+mat[0][2])/3;
+		int sum_case2 = (mat[1][0]+mat[1][1]+mat[1][2])/3;
+		int sum_case3 = (mat[2][0]+mat[2][1]+mat[2][2])/3;
+		
 		//horizontal
-		ans = ans || ((mat[0][0]+mat[0][1]+mat[0][2])/3==mat[0][0]) || ((mat[1][0]+mat[1][1]+mat[1][2])/3==mat[1][0]) || ((mat[2][0]+mat[2][1]+mat[2][2])/3==mat[2][0]);
+		ans = ans || (sum_case1==mat[0][0]&&sum_case1!=H_EMPTY) || (sum_case2==mat[1][0]&&sum_case2!=H_EMPTY) || (sum_case3==mat[2][0]&&sum_case3!=H_EMPTY);
+		
+		sum_case1 = (mat[0][0]+mat[1][0]+mat[2][0])/3;
+		sum_case2 = (mat[0][1]+mat[1][1]+mat[2][1])/3;
+		sum_case3 = (mat[0][2]+mat[1][2]+mat[2][2])/3;
+		
 		//vertical
-		ans = ans || ((mat[0][0]+mat[1][0]+mat[2][0])/3==mat[0][0]) || ((mat[0][1]+mat[1][1]+mat[2][1])/3==mat[0][1]) || ((mat[0][2]+mat[1][2]+mat[2][2])/3==mat[0][2]);
+		ans = ans || (sum_case1==mat[0][0]&&sum_case1!=H_EMPTY) || (sum_case2==mat[0][1]&&sum_case2!=H_EMPTY) || (sum_case3==mat[0][2]&&sum_case3!=H_EMPTY);
+		
+		sum_case1 = (mat[0][0]+mat[1][1]+mat[2][2])/3;
+		sum_case2 = (mat[0][2]+mat[1][1]+mat[2][0])/3;
+		
 		//cruz
-		ans = ans || ((mat[0][0]+mat[1][1]+mat[2][2])/3==mat[0][0]) || ((mat[0][2]+mat[1][1]+mat[2][0])/3==mat[2][0]);
+		ans = ans || (sum_case1==mat[0][0]&&sum_case1!=H_EMPTY) || (sum_case2==mat[2][0]&&sum_case2!=H_EMPTY);
+		
+		
 		
 		return ans;
 	}
