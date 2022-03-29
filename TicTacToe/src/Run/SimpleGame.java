@@ -1,6 +1,9 @@
 package Run;
 
 import java.util.Scanner;
+
+import Algorithm.GraphBuilder;
+import Algorithm.MinMax;
 import Rules.*;
 
 public class SimpleGame {
@@ -10,17 +13,25 @@ public class SimpleGame {
 		Game g = new Game();
 		
 		while(!g.isDone()) {
-			System.out.print("Informe a posição onde você deseja jogar: ");
-			int x = s.nextInt();
-			int y = s.nextInt();
-			
-			try {
-				g.move(x, y);
-			}catch (IllegalMoveException i){
-				System.err.println("\n *Movimento Ilegal, casa já ocupada* \n");
+			if(g.getTurn()) {
+				GraphBuilder gb = new GraphBuilder();
+				//construir grafo
+				//algoritmo
+				MinMax mn = new MinMax(gb);
+				
+			}else {
+				System.out.print("Informe a posição onde você deseja jogar: ");
+				int x = s.nextInt();
+				int y = s.nextInt();
+				
+				try {
+					g.move(x, y);
+				}catch (IllegalMoveException i){
+					System.err.println("\n *Movimento Ilegal, casa já ocupada* \n");
+				}
+				
+				g.printTicTacToe();
 			}
-			
-			g.printTicTacToe();
 		}
 		System.out.println("Jogo finalizado");
 		s.close();

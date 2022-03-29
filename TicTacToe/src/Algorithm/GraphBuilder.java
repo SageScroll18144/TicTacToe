@@ -24,6 +24,9 @@ public class GraphBuilder {
 	public void setImageGraph(Game g) {
 		nodesPos.add(g);		
 	}
+	public Game getBoard(int node){
+		return nodesPos.get(node); 
+	}
 	public void createASon(int v, int u) {
 		graph[v].push(u);
 		depthNode[u] = depthNode[v] + 1;
@@ -39,6 +42,12 @@ public class GraphBuilder {
 	}
 	public int getWeights(int node) {
 		return nodeWeights[node];
+	}
+	public LinkedList<Integer>[] getGraph() {
+		return graph;
+	}
+	public LinkedList<Integer> getSon(int i) {
+		return graph[i];
 	}
 	
 	
