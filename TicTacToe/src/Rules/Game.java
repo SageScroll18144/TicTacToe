@@ -52,8 +52,6 @@ public class Game {
 		//cruz
 		ans = ans || (sum_case1==mat[0][0]&&sum_case1!=H_EMPTY) || (sum_case2==mat[2][0]&&sum_case2!=H_EMPTY);
 		
-		
-		
 		return ans;
 	}
 	
