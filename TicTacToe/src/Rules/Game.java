@@ -131,7 +131,12 @@ public class Game {
 	public boolean getTurn() {
 		return turn;
 	}
-	
+	public boolean ItsAnEmptyHouse(int i, int j) {
+		return mat[i][j] == H_EMPTY;
+	}
+	public char[][] getBoard() {
+		return mat;
+	}
 	private static int boolToInt(boolean b) {
 	    return b ? 1 : 0;
 	}
