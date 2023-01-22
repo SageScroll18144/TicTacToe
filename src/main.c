@@ -1,4 +1,6 @@
 #include "raylib.h"
+#include "board.h"
+#include <stdio.h>
 
 int main(void){
     // Initialization
@@ -9,11 +11,7 @@ int main(void){
 
     InitWindow(screenWidth, screenHeight, "Tic Tac Toe!");
 
-    Texture2D board = LoadTexture("assets/tictactoe_board.png");
-
-    Rectangle recSrc = {0, 0, board.width, board.height};
-    Rectangle recDest = {0, 0, 400, 400};
-    Vector2 vecOrigin = {0, 0};
+    initBoard();
 
     SetTargetFPS(60); 
 
@@ -21,18 +19,20 @@ int main(void){
     while (!WindowShouldClose()) {
         // Update
 
+        printf("%d %d\n", GetMouseX(), GetMouseY());
+
         // Draw
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
 
-            DrawTexturePro(board, recSrc, recDest, vecOrigin, 0, WHITE);
+            drawBoard();
 
         EndDrawing();
 
     }
 
-    UnloadTexture(board);
+    unLoadBoard();
 
     CloseWindow();      
 
