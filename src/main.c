@@ -25,7 +25,6 @@ int main(void){
             updatePiece(getBoardPosition(), turn);
             turn = !turn;
         }
-        //printf("%d %d\n", GetMouseX(), GetMouseY());
 
         Vector2 bp = getBoardPosition();
         if(IsUserPlay()) printf("(%d, %d)\n", (int)bp.x, (int)bp.y);
