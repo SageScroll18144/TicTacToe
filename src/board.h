@@ -14,4 +14,4 @@ void initBoard(void);
 void drawBoard(void);
 void unLoadBoard(void);
 
-#endif BOARD_H
+#endif //BOARD_H

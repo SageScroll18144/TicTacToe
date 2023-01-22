@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "board.h"
+#include "user.h"
 #include <stdio.h>
 
 int main(void){
@@ -19,7 +20,10 @@ int main(void){
     while (!WindowShouldClose()) {
         // Update
 
-        printf("%d %d\n", GetMouseX(), GetMouseY());
+        //printf("%d %d\n", GetMouseX(), GetMouseY());
+
+        Vector2 bp = getBoardPosition();
+        if(IsUserPlay()) printf("(%d, %d)\n", (int)bp.x, (int)bp.y);
 
         // Draw
         BeginDrawing();
