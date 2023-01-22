@@ -14,12 +14,17 @@ int main(void){
 
     initBoard();
 
-    SetTargetFPS(60); 
+    int turn = 1;
 
+    SetTargetFPS(60); 
+    
     // Main game loop
     while (!WindowShouldClose()) {
         // Update
-
+        if(IsUserPlay() && IsMark(getBoardPosition())){
+            updatePiece(getBoardPosition(), turn);
+            turn = !turn;
+        }
         //printf("%d %d\n", GetMouseX(), GetMouseY());
 
         Vector2 bp = getBoardPosition();
@@ -29,8 +34,10 @@ int main(void){
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
-
             drawBoard();
+            DrawText("JKHFDLA", 200, 200, 20, BLACK);
+            drawPiece();
+            
 
         EndDrawing();
 
