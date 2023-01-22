@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "board.h"
+#include <stdio.h>
 
 Board board;
 
@@ -28,9 +29,9 @@ void updatePiece(Vector2 positionOnBoard, int turn){
     else if(x == 1) real_pos_x = 180;
     else real_pos_x = 290;
     
-    if(y == 0) real_pos_y = 50;
-    else if(y == 1) real_pos_y = 180;
-    else real_pos_y = 290;
+    if(y == 0) real_pos_y = 60;
+    else if(y == 1) real_pos_y = 190;
+    else real_pos_y = 300;
 
     Font font = LoadFont("fonts/jupiter_crash.png");
 
@@ -44,6 +45,7 @@ void updatePiece(Vector2 positionOnBoard, int turn){
 
 void drawPiece(void){
     Font font = LoadFont("fonts/jupiter_crash.png");
+    printf("-> %d\n", board.len_board_image);
     for(int i=0;i<board.len_board_image;i++){
         DrawTextEx(font, board.board_image[i].piece, board.board_image[i].pos, 60, 1, DARKGRAY);
     }

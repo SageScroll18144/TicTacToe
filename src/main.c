@@ -21,7 +21,7 @@ int main(void){
     // Main game loop
     while (!WindowShouldClose()) {
         // Update
-        if(IsUserPlay() && IsMark(getBoardPosition())){
+        if(IsUserPlay() && !IsMark(getBoardPosition())){
             updatePiece(getBoardPosition(), turn);
             turn = !turn;
         }
@@ -35,7 +35,6 @@ int main(void){
 
             ClearBackground(RAYWHITE);
             drawBoard();
-            DrawText("JKHFDLA", 200, 200, 20, BLACK);
             drawPiece();
             
 
