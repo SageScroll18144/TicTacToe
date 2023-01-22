@@ -45,7 +45,6 @@ void updatePiece(Vector2 positionOnBoard, int turn){
 
 void drawPiece(void){
     Font font = LoadFont("fonts/jupiter_crash.png");
-    printf("-> %d\n", board.len_board_image);
     for(int i=0;i<board.len_board_image;i++){
         DrawTextEx(font, board.board_image[i].piece, board.board_image[i].pos, 60, 1, DARKGRAY);
     }
