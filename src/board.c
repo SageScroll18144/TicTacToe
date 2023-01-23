@@ -88,14 +88,22 @@ char IsGameOver(void){
     }
     else if(board.game[0][1]!='-'&&board.game[0][1]==board.game[1][1]&&board.game[0][1]==board.game[2][1]){
         winner = board.game[0][1];
+    }else{
+        int flag=1;
+        for(int i=0;i<3;i++) for(int j=0;j<3;j++) if(board.game[i][j]=='-') flag = 0;
+        if(flag) winner = 'E';
     }
     return winner;
 }
 
 void drawWindowWinner(char winner){
-    char ans[110];
-    sprintf(ans, "%s%c%s", "The '", winner, "' winner!");
-    DrawTextEx(font, ans,(Vector2){120, 200}, 40, 1, GREEN);
+    if(winner == 'E'){
+        DrawTextEx(font, "Tie!",(Vector2){190, 200}, 40, 1, GREEN);
+    }else{
+        char ans[110];
+        sprintf(ans, "%s%c%s", "The '", winner, "' winner!");
+        DrawTextEx(font, ans,(Vector2){120, 200}, 40, 1, GREEN);
+    }
 }
 
 void unLoadBoard(void){
