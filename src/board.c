@@ -119,6 +119,43 @@ void putNodeOnGraphBoard(Board new_node, int idx){
     graph[idx][len_node[idx]++] = new_node;
 }
 
+int Evaluate(Board this_board){
+    char winner='-';
+
+    if(this_board.game[0][0]!='-'&&this_board.game[0][0]==this_board.game[1][1]&&this_board.game[0][0]==this_board.game[2][2]){
+        winner = this_board.game[0][0];
+    }
+    else if(this_board.game[0][0]!='-'&&this_board.game[0][0]==this_board.game[1][0]&&this_board.game[0][0]==this_board.game[2][0]){
+        winner = this_board.game[0][0];
+    }
+    else if(this_board.game[0][0]!='-'&&this_board.game[0][0]==this_board.game[0][1]&&this_board.game[0][0]==this_board.game[0][2]){
+        winner = this_board.game[0][0];
+    }
+    else if(this_board.game[0][0]!='-'&&this_board.game[0][0]==this_board.game[0][1]&&this_board.game[0][0]==this_board.game[0][2]){
+        winner = this_board.game[0][0];
+    }
+    else if(this_board.game[1][0]!='-'&&this_board.game[1][0]==this_board.game[1][1]&&this_board.game[1][0]==this_board.game[1][2]){
+        winner = this_board.game[1][0];
+    }
+    else if(this_board.game[2][0]!='-'&&this_board.game[2][0]==this_board.game[1][1]&&this_board.game[2][0]==this_board.game[0][2]){
+        winner = this_board.game[2][0];
+    }
+    else if(this_board.game[0][2]!='-'&&this_board.game[0][2]==this_board.game[1][2]&&this_board.game[0][2]==this_board.game[2][2]){
+        winner = this_board.game[0][2];
+    }
+    else if(this_board.game[2][0]!='-'&&this_board.game[2][0]==this_board.game[2][1]&&this_board.game[2][0]==this_board.game[2][2]){
+        winner = this_board.game[2][0];
+    }
+    else if(this_board.game[0][1]!='-'&&this_board.game[0][1]==this_board.game[1][1]&&this_board.game[0][1]==this_board.game[2][1]){
+        winner = this_board.game[0][1];
+    }else{
+        int flag=1;
+        for(int i=0;i<3;i++) for(int j=0;j<3;j++) if(this_board.game[i][j]=='-') flag = 0;
+        if(flag) winner = 'E';
+    }
+    return (winner == 'O') ? 2 : (winner == 'E') ? 1 : (winner == '-') ? 0 : -1;
+}
+
 Vector2 IAMachine(void){
     //criar a geração de movimentos
     //criar o min_max

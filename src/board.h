@@ -28,6 +28,7 @@ int IsMark(Vector2 positionOnBoard);
 char IsGameOver(void);
 void drawWindowWinner(char winner);
 void putNodeOnGraphBoard(Board new_node, int idx);
+int Evaluate(Board this_board);
 Vector2 IAMachine(void);
 void unLoadBoard(void);   
 
