@@ -8,7 +8,10 @@ int operation;
 void runMenu(void){
     operation = -1;
     printf("-> Select one of the option:\n\t1) PvP.\n\t2) PvM.\n\t3) Exit.\n.: ");
-    while(operation!=1 && operation!=2 && operation!=3) scanf("%d", &operation);
+    while(operation!=1 && operation!=2 && operation!=3) {
+        scanf("%d", &operation);
+        printf(".: ");
+    }
 }
 int IsPvPorPvM(void){
     if(operation == 3) exit(1);
