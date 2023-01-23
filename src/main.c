@@ -28,12 +28,13 @@ int main(void){
             winner = IsGameOver();
 
             // Update
-            if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-'){
-                updatePiece(getBoardPosition(), turn);
+            if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-' && turn){
+                updatePiece(getBoardPosition(), 1);
+                turn = !turn;
+            }else if(!turn){
+                updatePiece(IAMachine(), 0);
                 turn = !turn;
             }
-
-            Vector2 bp = getBoardPosition();
 
             // Draw
             BeginDrawing();
@@ -56,8 +57,6 @@ int main(void){
                 updatePiece(getBoardPosition(), turn);
                 turn = !turn;
             }
-
-            Vector2 bp = getBoardPosition();
 
             // Draw
             BeginDrawing();

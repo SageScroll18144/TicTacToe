@@ -106,6 +106,15 @@ void drawWindowWinner(char winner){
     }
 }
 
+Vector2 IAMachine(void){
+    //criar a geração de movimentos
+    //criar o min_max
+    //criar a pontuação
+
+    //retorna um Vector2 Como a jogada
+    return (Vector2){0,0};
+}
+
 void unLoadBoard(void){
     UnloadTexture(board.image);
 }

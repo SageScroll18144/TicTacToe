@@ -27,6 +27,7 @@ void drawPiece(void);
 int IsMark(Vector2 positionOnBoard);
 char IsGameOver(void);
 void drawWindowWinner(char winner);
+Vector2 IAMachine(void);
 void unLoadBoard(void);   
 
 #endif //BOARD_H
