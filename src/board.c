@@ -5,6 +5,7 @@
 
 Board board;
 Font font;
+Board *graph[10000010];
 
 void initBoard(void){
     board.image = LoadTexture("assets/tictactoe_board.png");
@@ -20,6 +21,8 @@ void initBoard(void){
     board.winner = '-';
 
     font = LoadFont("fonts/jupiter_crash.png");
+
+    for(int i=0;i<10000010;i++) graph[i] = NULL;
 }
 
 void drawBoard(void){
@@ -117,4 +120,5 @@ Vector2 IAMachine(void){
 
 void unLoadBoard(void){
     UnloadTexture(board.image);
+    for(int i=0;i<10000010;i++) free(graph[i]);
 }
