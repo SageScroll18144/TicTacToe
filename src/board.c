@@ -2,10 +2,12 @@
 #include "board.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 Board board;
 Font font;
 Board *graph[10000010];
+int len_node[10000010];
 
 void initBoard(void){
     board.image = LoadTexture("assets/tictactoe_board.png");
@@ -22,7 +24,10 @@ void initBoard(void){
 
     font = LoadFont("fonts/jupiter_crash.png");
 
-    for(int i=0;i<10000010;i++) graph[i] = NULL;
+    for(int i=0;i<10000010;i++) {
+        graph[i] = NULL;
+        len_node[i] = 0;
+    }
 }
 
 void drawBoard(void){
@@ -107,6 +112,11 @@ void drawWindowWinner(char winner){
         sprintf(ans, "%s%c%s", "The '", winner, "' winner!");
         DrawTextEx(font, ans,(Vector2){120, 200}, 40, 1, GREEN);
     }
+}
+
+void putNodeOnGraphBoard(Board new_node, int idx){
+    graph[idx] = (Board *) realloc(graph[idx], (len_node[idx] + 1) * sizeof(Board));
+    graph[idx][len_node[idx]++] = new_node;
 }
 
 Vector2 IAMachine(void){
