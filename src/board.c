@@ -118,6 +118,12 @@ void putNodeOnGraphBoard(Board new_node, int idx){
     graph[idx] = (Board *) realloc(graph[idx], (len_node[idx] + 1) * sizeof(Board));
     graph[idx][len_node[idx]++] = new_node;
 }
+void removeLastNodeOnGraphBoard(int which_board){
+    if(len_node > 0){
+        graph[which_board] = (Board *) realloc(graph[which_board], (len_node[which_board] - 1) * sizeof(Board));
+        len_node[which_board]--;
+    }
+}
 
 int Evaluate(Board this_board){
     char winner='-';

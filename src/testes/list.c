@@ -3,10 +3,13 @@
 
 int main(){
 
-    int *list[10];
+    int *list = (int *) malloc(sizeof(int));
+    int tam = 1;
+    list[0] = 89;
+    printf("%d\n", list[0]);
 
-    for(int i=0;i<10;i++) list[i] = NULL;
-    
-    for(int i=0;i<10;i++) free(list[i]);
+    list = (int *) realloc(list, (tam-1) * sizeof(int));
+    //printf("%d\n", list[0]);
+    free(list);
     return 0;
 }
