@@ -1,11 +1,14 @@
 #include "raylib.h"
 #include "board.h"
 #include "user.h"
+#include "menu.h"
 #include <stdio.h>
 
 int main(void){
     // Initialization
     //--------------------------------------------------------------------------------------
+    
+    runMenu();
 
     const int screenWidth = 400;
     const int screenHeight = 400;
@@ -20,30 +23,53 @@ int main(void){
     SetTargetFPS(60); 
     
     // Main game loop
-    while (!WindowShouldClose()) {
-        winner = IsGameOver();
+    if(IsPvPorPvM()){
+        while (!WindowShouldClose()) {
+            winner = IsGameOver();
 
-        // Update
-        if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-'){
-            updatePiece(getBoardPosition(), turn);
-            turn = !turn;
+            // Update
+            if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-'){
+                updatePiece(getBoardPosition(), turn);
+                turn = !turn;
+            }
+
+            Vector2 bp = getBoardPosition();
+
+            // Draw
+            BeginDrawing();
+
+                ClearBackground(RAYWHITE);
+                drawBoard();
+                drawPiece();
+                if(winner!='-') drawWindowWinner(winner);
+
+            EndDrawing();
+
+
         }
+    }else{
+        while (!WindowShouldClose()) {
+            winner = IsGameOver();
 
-        Vector2 bp = getBoardPosition();
+            // Update
+            if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-'){
+                updatePiece(getBoardPosition(), turn);
+                turn = !turn;
+            }
 
-        // Draw
-        BeginDrawing();
+            Vector2 bp = getBoardPosition();
 
-            ClearBackground(RAYWHITE);
-            drawBoard();
-            drawPiece();
-            if(winner!='-') drawWindowWinner(winner);
+            // Draw
+            BeginDrawing();
 
-        EndDrawing();
+                ClearBackground(RAYWHITE);
+                drawBoard();
+                drawPiece();
+                if(winner!='-') drawWindowWinner(winner);
 
-
+            EndDrawing();
+        }
     }
-
     unLoadBoard();
 
     CloseWindow();      
