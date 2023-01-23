@@ -16,6 +16,8 @@ typedef struct{
     Object_pair board_image[9];
     int len_board_image;
     int state[3][3];
+    char game[3][3];
+    char winner;
 }Board;
 
 void initBoard(void);
@@ -23,6 +25,8 @@ void drawBoard(void);
 void updatePiece(Vector2 positionOnBoard, int turn);
 void drawPiece(void);
 int IsMark(Vector2 positionOnBoard);
+char IsGameOver(void);
+void drawWindowWinner(char winner);
 void unLoadBoard(void);   
 
 #endif //BOARD_H

@@ -15,19 +15,22 @@ int main(void){
     initBoard();
 
     int turn = 1;
+    char winner;
 
     SetTargetFPS(60); 
     
     // Main game loop
     while (!WindowShouldClose()) {
+        winner = IsGameOver();
+
         // Update
-        if(IsUserPlay() && !IsMark(getBoardPosition())){
+        if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-'){
             updatePiece(getBoardPosition(), turn);
             turn = !turn;
         }
 
         Vector2 bp = getBoardPosition();
-        if(IsUserPlay()) printf("(%d, %d)\n", (int)bp.x, (int)bp.y);
+        //if(IsUserPlay()) printf("(%d, %d)\n", (int)bp.x, (int)bp.y);
 
         // Draw
         BeginDrawing();
@@ -35,9 +38,10 @@ int main(void){
             ClearBackground(RAYWHITE);
             drawBoard();
             drawPiece();
-            
+            if(winner!='-') drawWindowWinner(winner);
 
         EndDrawing();
+
 
     }
 
