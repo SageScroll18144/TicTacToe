@@ -11,11 +11,13 @@ typedef struct{
     int len_node[110];
     int set_w[110];
     int mark[110];
+    int fathers[110];
     int how_many_nodes;
 }Graph;
 
 void initGraph(void);
 void createSon(Board tmp, int father);
+void addSubSetGraph(void);
 void printImageBoard(void);
 void closeGraph(void);
 

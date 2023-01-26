@@ -24,6 +24,8 @@ void createSon(Board tmp, int father){
             tree.how_many_nodes++;
             tmp.idx_board = tree.how_many_nodes;
             
+            tree.fathers[tmp.idx_board] = father;
+
             tree.graph[father] = (Board *)realloc(tree.graph[father], (tree.len_node[father] + 1) * sizeof(Board));
             tree.graph[father][tree.len_node[father]] = tmp;
             tree.len_node[father]++;
@@ -33,6 +35,14 @@ void createSon(Board tmp, int father){
         }
     }
 
+}
+
+void addSubSetGraph(void){
+    for(int i=0;i<=tree.how_many_nodes;i++){
+        if(!tree.mark[i]){
+            for(int j=0;j<tree.len_node[i];j++) createSon(tree.graph[tree.fathers[i]][j], tree.fathers[j]);
+        }
+    }
 }
 
 void printImageBoard(void){
