@@ -6,14 +6,15 @@
 #include <stdio.h>
 
 Graph tree;
-Board nodes[110];
+Board nodes[10010];
 
 void initGraph(void){
-    for(int i=0;i<110;i++) {
+    for(int i=0;i<10010;i++) {
         tree.graph[i] = NULL;
         tree.len_node[i] = 0;
     }
     tree.how_many_nodes = 0;
+    tree.mark[0]=1;
 }
 
 void createSon(Board tmp, int father, int turn){
@@ -40,8 +41,7 @@ void createSon(Board tmp, int father, int turn){
 
 }
 
-void addSubSetGraph(void){
-    int turn = 1;
+void addSubSetGraph(int turn){
     int current_nodes = tree.how_many_nodes;
     for(int i=0;i<=current_nodes;i++){
         if(!tree.mark[i]){
@@ -49,6 +49,8 @@ void addSubSetGraph(void){
             tree.mark[i] = 1;
         }
     }
+    // createSon(nodes[64], 64, !turn);
+    printf("bora bill: %d\n\n", tree.how_many_nodes);
 }
 
 void printImageBoard(void){
@@ -69,7 +71,7 @@ void printImageBoard(void){
 
 void closeGraph(void){
     //printf("FKJKSFL %d\n\n", );
-    for(int i=0;i<110;i++) {
+    for(int i=0;i<10010;i++) {
         free(tree.graph[i]);
         tree.len_node[i] = 0;
         tree.mark[i] = 0;
