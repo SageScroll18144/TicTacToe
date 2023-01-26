@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "graph.h"
 
 Board board;
 Font font;
@@ -192,61 +193,68 @@ Vector2 IAMachine(void){
     }
 
     Board tmp = board;
-    int pointer_left_node = 0, pointer_right_node = 0;
-    for(int i=0;i<3;i++) for(int j=0;j<3;j++){
-        if(tmp.game[i][j] == '-'){
-            tmp.game[i][j] = 'O';
+    // int pointer_left_node = 0, pointer_right_node = 0;
+    // for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+    //     if(tmp.game[i][j] == '-'){
+    //         tmp.game[i][j] = 'O';
 
-            graph[0] = (Board *)realloc(graph[0], (len_node[0] + 1) * sizeof(Board));
-            graph[0][len_node[0]] = tmp;
-            len_node[0]++;
+    //         graph[0] = (Board *)realloc(graph[0], (len_node[0] + 1) * sizeof(Board));
+    //         graph[0][len_node[0]] = tmp;
+    //         len_node[0]++;
 
-            tmp.game[i][j] = '-';
+    //         tmp.game[i][j] = '-';
 
-            fathers[pointer_right_node++] = 0;
-        }
-    }
-    pointer_left_node++;
-    int depth = 3, turn = 1, node;
-    printf("LOWER_BOUND: %d \t UPPER_BOUND: %d\n", pointer_left_node, pointer_right_node);
-    while(depth--){
-        node=0;
-        for(int k=pointer_left_node;k<pointer_right_node;k++){
+    //         fathers[pointer_right_node++] = 0;
+    //     }
+    // }
+    // pointer_left_node++;
+    // int depth = 3, turn = 1, node;
+    // printf("LOWER_BOUND: %d \t UPPER_BOUND: %d\n", pointer_left_node, pointer_right_node);
+    // while(depth--){
+    //     node=0;
+    //     for(int k=pointer_left_node;k<pointer_right_node;k++){
 
-            tmp = graph[fathers[k]][node];
+    //         tmp = graph[fathers[k]][node];
 
-            for(int i=0;i<3;i++) for(int j=0;j<3;j++){
-                if(tmp.game[i][j] == '-'){
-                    tmp.game[i][j] = (turn) ? 'X' : 'O';
+    //         for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+    //             if(tmp.game[i][j] == '-'){
+    //                 tmp.game[i][j] = (turn) ? 'X' : 'O';
 
-                    graph[k] = (Board *)realloc(graph[k], (len_node[k] + 1) * sizeof(Board));
-                    graph[k][len_node[k]] = tmp;
-                    len_node[k]++;
+    //                 graph[k] = (Board *)realloc(graph[k], (len_node[k] + 1) * sizeof(Board));
+    //                 graph[k][len_node[k]] = tmp;
+    //                 len_node[k]++;
 
-                    tmp.game[i][j] = '-';
-                    fathers[pointer_right_node + node] = fathers[k];
-                    node++;
-                }
-            }
-        }
-        pointer_left_node = pointer_right_node;
-        pointer_right_node = node;
-        turn = !turn;
-    }
+    //                 tmp.game[i][j] = '-';
+    //                 fathers[pointer_right_node + node] = fathers[k];
+    //                 node++;
+    //             }
+    //         }
+    //     }
+    //     pointer_left_node = pointer_right_node;
+    //     pointer_right_node = node;
+    //     turn = !turn;
+    // }
     
-    for(int i=0;i<110;i++){
-        for(int j=0;j<len_node[i];j++){
-            for(int k=0;k<3;k++) {
-                for(int z=0;z<3;z++){
-                    printf("%c", graph[i][j].game[k][z]);
-                }
-                printf("\n");
-            }
-            printf("\n");
-        }
-    }
+    // for(int i=0;i<110;i++){
+    //     for(int j=0;j<len_node[i];j++){
+    //         for(int k=0;k<3;k++) {
+    //             for(int z=0;z<3;z++){
+    //                 printf("%c", graph[i][j].game[k][z]);
+    //             }
+    //             printf("\n");
+    //         }
+    //         printf("\n");
+    //     }
+    // }
 
-    for(int i=0;i<110;i++) free(graph[i]);
+    // for(int i=0;i<110;i++) free(graph[i]);
+
+    initGraph();
+    createSon(tmp, 0);
+    printImageBoard();
+    closeGraph();
+
+
     //retorna um Vector2 Como a jogada
     return (Vector2){0,0};
 }
