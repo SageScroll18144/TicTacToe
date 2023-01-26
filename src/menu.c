@@ -14,6 +14,6 @@ void runMenu(void){
     }
 }
 int IsPvPorPvM(void){
-    if(operation == 3) exit(1);
+    if(operation == 3) exit(0);
     return (operation == 1) ? 0 : (operation == 2) ? 1 : -1;//0 para jogar contra outra pessoa, 1 para jogar contra à máquina;
 }
