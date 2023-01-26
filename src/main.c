@@ -9,7 +9,9 @@ int main(void){
     // Initialization
     //--------------------------------------------------------------------------------------
 
-    runMenu();
+    //runMenu();
+
+
 
     const int screenWidth = 400;
     const int screenHeight = 400;
@@ -17,15 +19,25 @@ int main(void){
     InitWindow(screenWidth, screenHeight, "Tic Tac Toe!");
 
     initBoard();
-
+    initMenu();
     int turn = 1;
     char winner;
 
     SetTargetFPS(60); 
     
     // Main game loop
-    if(IsPvPorPvM()){
-        while (!WindowShouldClose()) {
+    while (!WindowShouldClose()) {
+        if(!canRun()){
+            updateMenu();
+            // Draw
+            BeginDrawing();
+
+                ClearBackground(RAYWHITE);
+                drawMenu();
+        
+            EndDrawing();
+        }
+        else if(IsPvPorPvM()){
             winner = IsGameOver();
 
             // Update
@@ -47,11 +59,7 @@ int main(void){
                 if(winner!='-') drawWindowWinner(winner);
         
             EndDrawing();
-
-
-        }
-    }else{
-        while (!WindowShouldClose()) {
+        }else{
             winner = IsGameOver();
 
             // Update
@@ -70,7 +78,7 @@ int main(void){
 
             EndDrawing();
         }
-    }
+    }   
     unLoadBoard();
 
     CloseWindow();      
