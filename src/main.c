@@ -8,7 +8,7 @@
 int main(void){
     // Initialization
     //--------------------------------------------------------------------------------------
-    
+
     runMenu();
 
     const int screenWidth = 400;
@@ -37,6 +37,8 @@ int main(void){
                 closeGraph();
                 turn = !turn;
             }
+            //printf("\n");
+            //printBackendGameImage();
 
             // Draw
             BeginDrawing();

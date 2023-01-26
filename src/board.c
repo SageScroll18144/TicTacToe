@@ -145,7 +145,7 @@ int Evaluate(Board this_board){
         for(int i=0;i<3;i++) for(int j=0;j<3;j++) if(this_board.game[i][j]=='-') flag = 0;
         if(flag) winner = 'E';
     }
-    return (winner == 'O') ? INT32_MAX : (winner == 'E') ? 1 : (winner == '-') ? 0 : INT32_MIN;
+    return (winner == 'O') ? INT32_MAX : (winner == 'E') ? INT32_MIN : (winner == '-') ? 0 : INT32_MIN;
 }
 
 void buildGraph(int depth){
@@ -188,7 +188,7 @@ int algorithm(int node, int depth, int isMaximizing){
 Vector2 IAMachine(void){
     buildGraph(10);
 
-    int ans = algorithm(0, 10, 1);
+    int ans = algorithm(0, 10, 0);
 
     Board ans_board;
     for(int i = 0; i < howManyChildHasSubSet(0);i++){
@@ -197,12 +197,33 @@ Vector2 IAMachine(void){
         }
     }
 
+    for(int i = 0; i < howManyChildHasSubSet(0);i++){
+        printf("-> %d\n", getNodeWeight(getSon(0, i)));
+    }
+
     //printImageBoard();
+
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++){
+            printf("%c", ans_board.game[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n%d\n", ans);
     
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
         if(ans_board.game[i][j] != board.game[i][j]) return (Vector2){i,j};
     }
  
+}
+
+void printBackendGameImage(void){
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++){
+            printf("%c", board.game[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 void unLoadBoard(void){

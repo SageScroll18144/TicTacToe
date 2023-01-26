@@ -35,6 +35,7 @@ int Evaluate(Board this_board);
 void buildGraph(int depth);
 int algorithm(int node, int depth, int isMaximizing);
 Vector2 IAMachine(void);
+void printBackendGameImage(void);
 void unLoadBoard(void);   
 
 #endif //BOARD_H
