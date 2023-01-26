@@ -2,6 +2,7 @@
 #include "board.h"
 #include "user.h"
 #include "menu.h"
+#include "graph.h"
 #include <stdio.h>
 
 int main(void){
@@ -33,6 +34,7 @@ int main(void){
                 turn = !turn;
             }else if(!turn){
                 updatePiece(IAMachine(), 0);
+                closeGraph();
                 turn = !turn;
             }
 

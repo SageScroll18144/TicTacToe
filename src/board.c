@@ -186,17 +186,23 @@ int algorithm(int node, int depth, int isMaximizing){
 }
 
 Vector2 IAMachine(void){
-    //criar a geração de movimentos
-    //criar o min_max
-    //criar a pontuação
-
     buildGraph(8);
 
-    printImageBoard();
-    closeGraph();
+    int ans = algorithm(0, 8, 1);
 
-    //retorna um Vector2 Como a jogada
-    return (Vector2){0,0};
+    Board ans_board;
+    for(int i = 0; i < howManyChildHasSubSet(0);i++){
+        if(ans == getNodeWeight(getSon(0, i))){
+            ans_board = getBoard(0, i);
+        }
+    }
+
+    printImageBoard();
+    
+    for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+        if(ans_board.game[i][j] != board.game[i][j]) return (Vector2){i,j};
+    }
+ 
 }
 
 void unLoadBoard(void){

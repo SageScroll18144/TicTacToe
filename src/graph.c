@@ -75,6 +75,10 @@ void setNodeWeight(int node, int value){
     tree.set_w[node] = value;
 }
 
+Board getBoard(int father, int son){
+    return tree.graph[father][son];
+}
+
 void printImageBoard(void){
     for(int i=0;i<=tree.how_many_nodes;i++){
         for(int j=0;j<tree.len_node[i];j++){

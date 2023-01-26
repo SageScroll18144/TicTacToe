@@ -23,6 +23,7 @@ int getNodeWeight(int idx);
 int howManyChildHasSubSet(int node);
 int getSon(int father, int idx);
 void setNodeWeight(int node, int value);
+Board getBoard(int father, int son);
 void printImageBoard(void);
 void closeGraph(void);
 
