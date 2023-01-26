@@ -10,5 +10,6 @@ int getMenuPos(void);
 void runMenu(void);
 int IsPvPorPvM(void);
 int canRun(void);
+void unLoadFilesMenu(void);
 
 #endif

@@ -9,6 +9,7 @@ char msg2[] = "PvM";
 
 Font font_;
 Vector2 position;
+Sound selection_arrow, selection_enter;
 
 int operation, menu_pos, flag_click = 0;
 
@@ -19,21 +20,30 @@ void initMenu(void){
     position.y = 100;
 
     menu_pos = 0;
+
+    selection_arrow = LoadSound("sounds/click.mp3");
+    selection_enter = LoadSound("sounds/selecao.mp3");
+
+    SetSoundVolume(selection_arrow, 0.5f);
+    SetSoundVolume(selection_enter, 0.5f);
 }
 
 void updateMenu(void){
     if (IsKeyPressed (KEY_DOWN)) {
         menu_pos++;
         if (menu_pos > 1) menu_pos = 1;
+        PlaySound(selection_arrow);
     }
     else if (IsKeyPressed (KEY_UP)){
         menu_pos--; 
         if (menu_pos < 0) menu_pos = 1;
+        PlaySound(selection_arrow);
     }
     
     if(IsKeyPressed(KEY_ENTER)){
         operation = !menu_pos;
         flag_click = 1;
+        PlaySound(selection_enter);
     }
 }
 
@@ -75,4 +85,9 @@ int IsPvPorPvM(void){
 }
 int canRun(void){
     return flag_click;
+}
+
+void unLoadFilesMenu(void){
+    UnloadSound(selection_arrow);
+    UnloadSound(selection_enter);
 }

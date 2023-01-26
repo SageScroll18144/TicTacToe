@@ -9,10 +9,6 @@ int main(void){
     // Initialization
     //--------------------------------------------------------------------------------------
 
-    //runMenu();
-
-
-
     const int screenWidth = 400;
     const int screenHeight = 400;
 
@@ -80,7 +76,7 @@ int main(void){
         }
     }   
     unLoadBoard();
-
+    unLoadFilesMenu();
     CloseWindow();      
 
     return 0;

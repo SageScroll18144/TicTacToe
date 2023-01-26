@@ -8,6 +8,7 @@
 
 Board board;
 Font font;
+Sound click;
 
 void initBoard(void){
     board.image = LoadTexture("assets/tictactoe_board.png");
@@ -23,7 +24,9 @@ void initBoard(void){
     board.winner = '-';
 
     font = LoadFont("fonts/setback.png");
-
+    
+    LoadSound("sounds/click.wav");
+    SetSoundVolume(click, 0.5f);
     
 }
 
@@ -52,6 +55,8 @@ void updatePiece(Vector2 positionOnBoard, int turn){
 
     board.state[x][y] = 1;
     board.game[x][y] = (turn) ? 'X' : 'O';
+
+    PlaySound(click);
 }
 
 void drawPiece(void){
@@ -214,4 +219,5 @@ void printBackendGameImage(void){
 
 void unLoadBoard(void){
     UnloadTexture(board.image);
+    UnloadSound(click);
 }
