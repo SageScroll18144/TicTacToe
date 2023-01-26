@@ -148,10 +148,6 @@ int Evaluate(Board this_board){
     return (winner == 'O') ? INT32_MAX : (winner == 'E') ? 1 : (winner == '-') ? 0 : INT32_MIN;
 }
 
-double algorithm(int node, int depth, double a, double b, int isMaximizing){
-    return 0;
-}
-
 void buildGraph(int depth){
     Board tmp = board;
     initGraph();
@@ -166,6 +162,10 @@ void buildGraph(int depth){
     }
 
     setWeightFinalNodes();
+}
+
+int algorithm(int node, int depth, int isMaximizing){
+    return 0;
 }
 
 Vector2 IAMachine(void){

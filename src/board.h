@@ -30,7 +30,7 @@ char IsGameOver(void);
 void drawWindowWinner(char winner);
 int Evaluate(Board this_board);
 void buildGraph(int depth);
-double algorithm(int node, int depth, double a, double b, int isMaximizing);
+int algorithm(int node, int depth, int isMaximizing);
 Vector2 IAMachine(void);
 void unLoadBoard(void);   
 
