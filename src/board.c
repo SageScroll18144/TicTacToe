@@ -186,9 +186,9 @@ int algorithm(int node, int depth, int isMaximizing){
 }
 
 Vector2 IAMachine(void){
-    buildGraph(8);
+    buildGraph(10);
 
-    int ans = algorithm(0, 8, 1);
+    int ans = algorithm(0, 10, 1);
 
     Board ans_board;
     for(int i = 0; i < howManyChildHasSubSet(0);i++){
@@ -197,7 +197,7 @@ Vector2 IAMachine(void){
         }
     }
 
-    printImageBoard();
+    //printImageBoard();
     
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
         if(ans_board.game[i][j] != board.game[i][j]) return (Vector2){i,j};
