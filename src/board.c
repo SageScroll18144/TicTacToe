@@ -103,7 +103,7 @@ char IsGameOver(void){
 
 void drawWindowWinner(char winner){
     if(winner == 'E'){
-        DrawTextEx(font, "Tie!",(Vector2){190, 200}, 40, 1, GREEN);
+        DrawTextEx(font, "Tie!",(Vector2){170, 200}, 40, 1, GREEN);
     }else{
         char ans[110];
         sprintf(ans, "%s%c%s", "The '", winner, "' winner!");
