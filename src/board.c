@@ -161,7 +161,7 @@ Vector2 IAMachine(void){
     initGraph();
     createSon(tmp, 0, 0);
     
-    int depth = 2, turn = 1;
+    int depth = 4, turn = 1;
     while(depth--){
         addSubSetGraph(turn);
         turn = !turn;
