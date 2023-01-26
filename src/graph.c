@@ -60,6 +60,21 @@ void setWeightFinalNodes(void){
     }
 }
 
+int getNodeWeight(int idx){
+    return tree.set_w[idx];
+}
+
+int howManyChildHasSubSet(int node){
+    return tree.len_node[node];
+}
+int getSon(int father, int idx){
+    return tree.graph[father][idx].idx_board;
+}
+
+void setNodeWeight(int node, int value){
+    tree.set_w[node] = value;
+}
+
 void printImageBoard(void){
     for(int i=0;i<=tree.how_many_nodes;i++){
         for(int j=0;j<tree.len_node[i];j++){

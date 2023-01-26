@@ -3,6 +3,9 @@
 
 #include "raylib.h"
 
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
 typedef struct{
     Vector2 pos;
     char piece[1]; //string

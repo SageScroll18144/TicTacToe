@@ -165,7 +165,24 @@ void buildGraph(int depth){
 }
 
 int algorithm(int node, int depth, int isMaximizing){
-    return 0;
+    if(depth == 0) return getNodeWeight(node);
+    if(isMaximizing){
+        int child, value = INT32_MIN;
+        for(int i = 0; i < howManyChildHasSubSet(node);i++){
+            child = getSon(node, i);
+            value = MAX(value, algorithm(child, (depth-1), 0));
+        }
+        setNodeWeight(node, value);
+        return value;
+    }else{
+        int child, value = INT32_MAX;
+        for(int i = 0; i < howManyChildHasSubSet(node);i++){
+            child = getSon(node, i);
+            value = MIN(value, algorithm(child, (depth-1), 1));
+        }
+        setNodeWeight(node, value);
+        return value;
+    }
 }
 
 Vector2 IAMachine(void){

@@ -19,6 +19,10 @@ void initGraph(void);
 void createSon(Board tmp, int father, int turn);
 void addSubSetGraph(int turn);
 void setWeightFinalNodes(void);
+int getNodeWeight(int idx);
+int howManyChildHasSubSet(int node);
+int getSon(int father, int idx);
+void setNodeWeight(int node, int value);
 void printImageBoard(void);
 void closeGraph(void);
 
