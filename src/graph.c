@@ -6,10 +6,10 @@
 #include <stdio.h>
 
 Graph tree;
-Board nodes[10010];
+Board nodes[100010];
 
 void initGraph(void){
-    for(int i=0;i<10010;i++) {
+    for(int i=0;i<100010;i++) {
         tree.graph[i] = NULL;
         tree.len_node[i] = 0;
     }
@@ -18,7 +18,6 @@ void initGraph(void){
 }
 
 void createSon(Board tmp, int father, int turn){
-    //tree.mark[father] = 1;
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
         if(tmp.game[i][j] == '-'){
             tmp.game[i][j] = (turn) ? 'X' : 'O';
@@ -42,15 +41,23 @@ void createSon(Board tmp, int father, int turn){
 }
 
 void addSubSetGraph(int turn){
-    int current_nodes = tree.how_many_nodes;
+    int current_nodes = tree.how_many_nodes, weight;
     for(int i=0;i<=current_nodes;i++){
         if(!tree.mark[i]){
-            createSon(nodes[i], i, turn);
+            weight = Evaluate(nodes[i]);
+
+            if(weight == 0) createSon(nodes[i], i, turn);
+            else tree.set_w[i] = weight;
+
             tree.mark[i] = 1;
         }
     }
-    // createSon(nodes[64], 64, !turn);
-    printf("bora bill: %d\n\n", tree.how_many_nodes);
+}
+
+void setWeightFinalNodes(void){
+    for(int i=0;i<100010;i++){
+        if(tree.len_node[i] == 0) tree.set_w[i] = Evaluate(nodes[i]);
+    }
 }
 
 void printImageBoard(void){
@@ -70,8 +77,7 @@ void printImageBoard(void){
 }
 
 void closeGraph(void){
-    //printf("FKJKSFL %d\n\n", );
-    for(int i=0;i<10010;i++) {
+    for(int i=0;i<100010;i++) {
         free(tree.graph[i]);
         tree.len_node[i] = 0;
         tree.mark[i] = 0;

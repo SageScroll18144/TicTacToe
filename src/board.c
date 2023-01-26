@@ -152,21 +152,29 @@ double algorithm(int node, int depth, double a, double b, int isMaximizing){
     return 0;
 }
 
+void buildGraph(int depth){
+    Board tmp = board;
+    initGraph();
+    createSon(tmp, 0, 0);
+    
+    depth--;
+
+    int turn = 1;
+    while(depth--){
+        addSubSetGraph(turn);
+        turn = !turn;
+    }
+
+    setWeightFinalNodes();
+}
+
 Vector2 IAMachine(void){
     //criar a geração de movimentos
     //criar o min_max
     //criar a pontuação
 
-    Board tmp = board;
-    initGraph();
-    createSon(tmp, 0, 0);
-    
-    int depth = 4, turn = 1;
-    while(depth--){
-        addSubSetGraph(turn);
-        turn = !turn;
-    }
-    
+    buildGraph(8);
+
     printImageBoard();
     closeGraph();
 

@@ -7,17 +7,18 @@
 #include <stdlib.h>
 
 typedef struct{
-    Board *graph[10010];//10010
-    int len_node[10010];
-    int set_w[10010];
-    int mark[10010];
-    int fathers[10010];
+    Board *graph[100010];//10010
+    int len_node[100010];
+    int set_w[100010];
+    int mark[100010];
+    int fathers[100010];
     int how_many_nodes;
 }Graph;
 
 void initGraph(void);
 void createSon(Board tmp, int father, int turn);
 void addSubSetGraph(int turn);
+void setWeightFinalNodes(void);
 void printImageBoard(void);
 void closeGraph(void);
 
