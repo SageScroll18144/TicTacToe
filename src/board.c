@@ -22,7 +22,7 @@ void initBoard(void){
     for(int i=0;i<3;i++) for(int j=0;j<3;j++) board.game[i][j]='-';
     board.winner = '-';
 
-    font = LoadFont("fonts/jupiter_crash.png");
+    font = LoadFont("fonts/setback.png");
 
     
 }
@@ -38,11 +38,11 @@ void updatePiece(Vector2 positionOnBoard, int turn){
     int real_pos_x, real_pos_y;
 
     if(x == 0) real_pos_x = 50;
-    else if(x == 1) real_pos_x = 180;
+    else if(x == 1) real_pos_x = 170;
     else real_pos_x = 290;
     
     if(y == 0) real_pos_y = 60;
-    else if(y == 1) real_pos_y = 190;
+    else if(y == 1) real_pos_y = 182;
     else real_pos_y = 300;
 
     if(turn) {

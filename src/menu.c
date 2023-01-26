@@ -13,7 +13,7 @@ Vector2 position;
 int operation, menu_pos, flag_click = 0;
 
 void initMenu(void){
-    font_ = LoadFont("fonts/jupiter_crash.png");
+    font_ = LoadFont("fonts/setback.png");
 
     position.x = 80;
     position.y = 100;
