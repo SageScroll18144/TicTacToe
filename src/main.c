@@ -37,8 +37,6 @@ int main(void){
                 closeGraph();
                 turn = !turn;
             }
-            //printf("\n");
-            //printBackendGameImage();
 
             // Draw
             BeginDrawing();

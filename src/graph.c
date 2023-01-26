@@ -56,7 +56,6 @@ void setWeightFinalNodes(void){
     for(int i=0;i<100010;i++){
         if(tree.len_node[i] == 0) {
             tree.set_w[i] = Evaluate(nodes[i]);
-            if(Evaluate(nodes[i])==INT32_MAX)printf("AQUII %d\n", i);
         }
     }
 }

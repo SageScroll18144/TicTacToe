@@ -196,20 +196,6 @@ Vector2 IAMachine(void){
             ans_board = getBoard(0, i);
         }
     }
-
-    for(int i = 0; i < howManyChildHasSubSet(0);i++){
-        printf("-> %d\n", getNodeWeight(getSon(0, i)));
-    }
-
-    //printImageBoard();
-
-    for(int i=0;i<3;i++) {
-        for(int j=0;j<3;j++){
-            printf("%c", ans_board.game[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n%d\n", ans);
     
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
         if(ans_board.game[i][j] != board.game[i][j]) return (Vector2){i,j};
