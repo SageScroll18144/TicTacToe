@@ -11,7 +11,6 @@ typedef struct{
     int len_node[100010];
     int set_w[100010];
     int mark[100010];
-    int fathers[100010];
     int how_many_nodes;
 }Graph;
 

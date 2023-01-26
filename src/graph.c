@@ -24,9 +24,7 @@ void createSon(Board tmp, int father, int turn){
             
             tree.how_many_nodes++;
             tmp.idx_board = tree.how_many_nodes;
-            
-            tree.fathers[tmp.idx_board] = father;
-
+        
             nodes[tmp.idx_board] = tmp;
 
             tree.graph[father] = (Board *)realloc(tree.graph[father], (tree.len_node[father] + 1) * sizeof(Board));
