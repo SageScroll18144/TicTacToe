@@ -161,39 +161,80 @@ double algorithm(int node, int depth, double a, double b, int isMaximizing){
     return 0;
 }
 
+// void createSon(Board **graph, int **len, int father){
+//     Board tmp = grap;
+    
+//     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+//         if(tmp.game[i][j] == '-'){
+//             tmp.game[i][j] = 'O';
+            
+//             graph[0] = (Board *)realloc(graph[0], (len_node[0] + 1) * sizeof(Board));
+//             graph[0][len_node[0]] = tmp;
+//             len_node[0]++;
+
+//             tmp.game[i][j] = '-';
+//         }
+//     }
+// }
+
 Vector2 IAMachine(void){
     //criar a geração de movimentos
     //criar o min_max
     //criar a pontuação
 
-    Board *graph[10010];//10000010
-    int len_node[10010];
-    int set_w[10010];
-    for(int i=0;i<10010;i++) {
+    Board *graph[110];//10010
+    int len_node[110];
+    int set_w[110];
+    int fathers[110];
+    for(int i=0;i<110;i++) {
         graph[i] = NULL;
         len_node[i] = 0;
     }
 
     Board tmp = board;
-    
+    int pointer_left_node = 0, pointer_right_node = 0;
     for(int i=0;i<3;i++) for(int j=0;j<3;j++){
         if(tmp.game[i][j] == '-'){
             tmp.game[i][j] = 'O';
-            
+
             graph[0] = (Board *)realloc(graph[0], (len_node[0] + 1) * sizeof(Board));
             graph[0][len_node[0]] = tmp;
             len_node[0]++;
 
             tmp.game[i][j] = '-';
+
+            fathers[pointer_right_node++] = 0;
         }
     }
-    int turn = 1;
-    // int depth = 3; // 4 - 1
-    // while(depth--){
+    pointer_left_node++;
+    int depth = 3, turn = 1, node;
+    printf("LOWER_BOUND: %d \t UPPER_BOUND: %d\n", pointer_left_node, pointer_right_node);
+    while(depth--){
+        node=0;
+        for(int k=pointer_left_node;k<pointer_right_node;k++){
 
-    // }
+            tmp = graph[fathers[k]][node];
+
+            for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+                if(tmp.game[i][j] == '-'){
+                    tmp.game[i][j] = (turn) ? 'X' : 'O';
+
+                    graph[k] = (Board *)realloc(graph[k], (len_node[k] + 1) * sizeof(Board));
+                    graph[k][len_node[k]] = tmp;
+                    len_node[k]++;
+
+                    tmp.game[i][j] = '-';
+                    fathers[pointer_right_node + node] = fathers[k];
+                    node++;
+                }
+            }
+        }
+        pointer_left_node = pointer_right_node;
+        pointer_right_node = node;
+        turn = !turn;
+    }
     
-    for(int i=0;i<10010;i++){
+    for(int i=0;i<110;i++){
         for(int j=0;j<len_node[i];j++){
             for(int k=0;k<3;k++) {
                 for(int z=0;z<3;z++){
@@ -205,7 +246,7 @@ Vector2 IAMachine(void){
         }
     }
 
-    for(int i=0;i<10010;i++) free(graph[i]);
+    for(int i=0;i<110;i++) free(graph[i]);
     //retorna um Vector2 Como a jogada
     return (Vector2){0,0};
 }
