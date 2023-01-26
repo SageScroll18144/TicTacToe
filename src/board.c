@@ -145,7 +145,7 @@ int Evaluate(Board this_board){
         for(int i=0;i<3;i++) for(int j=0;j<3;j++) if(this_board.game[i][j]=='-') flag = 0;
         if(flag) winner = 'E';
     }
-    return (winner == 'O') ? INT32_MAX : (winner == 'E') ? 1 : (winner == '-') ? 0 : INT32_MIN;
+    return (winner == 'O') ? INT32_MAX : (winner == 'E') ? INT32_MAX : (winner == '-') ? 0 : INT32_MIN;
 }
 
 void buildGraph(int depth){

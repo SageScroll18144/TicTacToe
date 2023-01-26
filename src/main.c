@@ -32,7 +32,7 @@ int main(void){
             if(IsUserPlay() && !IsMark(getBoardPosition()) && winner=='-' && turn){
                 updatePiece(getBoardPosition(), 1);
                 turn = !turn;
-            }else if(!turn){
+            }else if(!turn && winner == '-'){
                 updatePiece(IAMachine(), 0);
                 closeGraph();
                 turn = !turn;
@@ -45,7 +45,7 @@ int main(void){
                 drawBoard();
                 drawPiece();
                 if(winner!='-') drawWindowWinner(winner);
-
+        
             EndDrawing();
 
 
