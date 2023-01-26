@@ -27,9 +27,10 @@ void drawPiece(void);
 int IsMark(Vector2 positionOnBoard);
 char IsGameOver(void);
 void drawWindowWinner(char winner);
-void putNodeOnGraphBoard(Board new_node, int idx);
-void removeLastNodeOnGraphBoard(int which_board);
+// void putNodeOnGraphBoard(Board new_node, int idx);
+// void removeLastNodeOnGraphBoard(int which_board);
 int Evaluate(Board this_board);
+double algorithm(int node, int depth, double a, double b, int isMaximizing);
 Vector2 IAMachine(void);
 void unLoadBoard(void);   
 

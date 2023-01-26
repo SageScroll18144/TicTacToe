@@ -6,8 +6,6 @@
 
 Board board;
 Font font;
-Board *graph[10000010];
-int len_node[10000010];
 
 void initBoard(void){
     board.image = LoadTexture("assets/tictactoe_board.png");
@@ -24,10 +22,7 @@ void initBoard(void){
 
     font = LoadFont("fonts/jupiter_crash.png");
 
-    for(int i=0;i<10000010;i++) {
-        graph[i] = NULL;
-        len_node[i] = 0;
-    }
+    
 }
 
 void drawBoard(void){
@@ -114,16 +109,16 @@ void drawWindowWinner(char winner){
     }
 }
 
-void putNodeOnGraphBoard(Board new_node, int idx){
-    graph[idx] = (Board *) realloc(graph[idx], (len_node[idx] + 1) * sizeof(Board));
-    graph[idx][len_node[idx]++] = new_node;
-}
-void removeLastNodeOnGraphBoard(int which_board){
-    if(len_node > 0){
-        graph[which_board] = (Board *) realloc(graph[which_board], (len_node[which_board] - 1) * sizeof(Board));
-        len_node[which_board]--;
-    }
-}
+// void putNodeOnGraphBoard(Board new_node, int idx){
+//     graph[idx] = (Board *) realloc(graph[idx], (len_node[idx] + 1) * sizeof(Board));
+//     graph[idx][len_node[idx]++] = new_node;
+// }
+// void removeLastNodeOnGraphBoard(int which_board){
+//     if(len_node > 0){
+//         graph[which_board] = (Board *) realloc(graph[which_board], (len_node[which_board] - 1) * sizeof(Board));
+//         len_node[which_board]--;
+//     }
+// }
 
 int Evaluate(Board this_board){
     char winner='-';
@@ -162,16 +157,61 @@ int Evaluate(Board this_board){
     return (winner == 'O') ? 2 : (winner == 'E') ? 1 : (winner == '-') ? 0 : -1;
 }
 
+double algorithm(int node, int depth, double a, double b, int isMaximizing){
+    return 0;
+}
+
 Vector2 IAMachine(void){
     //criar a geração de movimentos
     //criar o min_max
     //criar a pontuação
 
+    Board *graph[10010];//10000010
+    int len_node[10010];
+    int set_w[10010];
+    for(int i=0;i<10010;i++) {
+        graph[i] = NULL;
+        len_node[i] = 0;
+    }
+
+    Board tmp = board;
+    
+    for(int i=0;i<3;i++) for(int j=0;j<3;j++){
+        if(tmp.game[i][j] == '-'){
+            tmp.game[i][j] = 'O';
+            
+            graph[0] = (Board *)realloc(graph[0], (len_node[0] + 1) * sizeof(Board));
+            graph[0][len_node[0]] = tmp;
+            len_node[0]++;
+
+            tmp.game[i][j] = '-';
+        }
+    }
+    int turn = 1;
+    // int depth = 3; // 4 - 1
+    // while(depth--){
+
+    // }
+    
+    for(int i=0;i<10010;i++){
+        for(int j=0;j<len_node[i];j++){
+            for(int k=0;k<3;k++) {
+                for(int z=0;z<3;z++){
+                    printf("%c", graph[i][j].game[k][z]);
+                }
+                printf("\n");
+            }
+            printf("\n");
+        }
+    }
+
+    for(int i=0;i<10010;i++) free(graph[i]);
     //retorna um Vector2 Como a jogada
     return (Vector2){0,0};
 }
 
+// void createGraph()
+
 void unLoadBoard(void){
     UnloadTexture(board.image);
-    for(int i=0;i<10000010;i++) free(graph[i]);
 }
