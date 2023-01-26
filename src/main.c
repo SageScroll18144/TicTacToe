@@ -14,6 +14,8 @@ int main(void){
 
     InitWindow(screenWidth, screenHeight, "Tic Tac Toe!");
 
+     InitAudioDevice(); 
+
     initBoard();
     initMenu();
     int turn = 1;
@@ -77,6 +79,7 @@ int main(void){
     }   
     unLoadBoard();
     unLoadFilesMenu();
+    CloseAudioDevice();
     CloseWindow();      
 
     return 0;
