@@ -18,6 +18,7 @@ typedef struct{
     int state[3][3];
     char game[3][3];
     char winner;
+    int idx_board;
 }Board;
 
 void initBoard(void);
