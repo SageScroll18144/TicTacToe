@@ -251,7 +251,7 @@ Vector2 IAMachine(void){
     // for(int i=0;i<110;i++) free(graph[i]);
 
     initGraph();
-    createSon(tmp, 0);
+    createSon(tmp, 0, 0);
     addSubSetGraph();
     printImageBoard();
     closeGraph();

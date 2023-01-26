@@ -16,7 +16,7 @@ typedef struct{
 }Graph;
 
 void initGraph(void);
-void createSon(Board tmp, int father);
+void createSon(Board tmp, int father, int turn);
 void addSubSetGraph(void);
 void printImageBoard(void);
 void closeGraph(void);
