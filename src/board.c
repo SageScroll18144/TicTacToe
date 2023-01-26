@@ -107,7 +107,7 @@ void drawWindowWinner(char winner){
     }else{
         char ans[110];
         sprintf(ans, "%s%c%s", "The '", winner, "' winner!");
-        DrawTextEx(font, ans,(Vector2){120, 200}, 40, 1, GREEN);
+        DrawTextEx(font, ans,(Vector2){60, 200}, 40, 1, GREEN);
     }
 }
 
