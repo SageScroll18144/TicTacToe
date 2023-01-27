@@ -11,7 +11,7 @@ Font font_;
 Vector2 position;
 Sound selection_arrow, selection_enter;
 
-int operation, menu_pos, flag_click = 0;
+int operation, menu_pos, flag_click = 0, turn_play = 0;
 
 void initMenu(void){
     font_ = LoadFont("fonts/setback.png");
@@ -24,7 +24,7 @@ void initMenu(void){
     selection_arrow = LoadSound("sounds/click.mp3");
     selection_enter = LoadSound("sounds/selecao.mp3");
 
-    SetSoundVolume(selection_arrow, 0.5f);
+    SetSoundVolume(selection_arrow, 0.8f);
     SetSoundVolume(selection_enter, 0.5f);
 }
 
@@ -36,15 +36,24 @@ void updateMenu(void){
     }
     else if (IsKeyPressed (KEY_UP)){
         menu_pos--; 
-        if (menu_pos < 0) menu_pos = 1;
+        if (menu_pos < 0) menu_pos = 0;
         PlaySound(selection_arrow);
     }
-    
-    if(IsKeyPressed(KEY_ENTER)){
+    else if(GetMouseX() >= 89 && GetMouseX() <= 330 && GetMouseY() >= 174 && GetMouseY() <= 210) {
+        menu_pos=0;
+        if(turn_play) PlaySound(selection_arrow);
+        turn_play = 0;
+    }else if(GetMouseX() >= 89 && GetMouseX() <= 330 && GetMouseY() >= 240 && GetMouseY() <= 280) {
+        menu_pos=1;
+        if(!turn_play) PlaySound(selection_arrow);
+        turn_play = 1;
+    }
+    if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
         operation = !menu_pos;
         flag_click = 1;
         PlaySound(selection_enter);
     }
+    
 }
 
 void drawMenu(void){
