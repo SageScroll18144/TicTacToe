@@ -79,6 +79,17 @@ Board getBoard(int father, int son){
     return tree.graph[father][son];
 }
 
+int getIdxOfNode(int node, int idx){
+    return tree.graph[node][idx].idx_board;
+}
+
+int heightNode(int node){
+    if(tree.len_node[node] == 0) return 1;
+    for(int i=0;i<tree.len_node[node];i++){
+        return heightNode(tree.graph[node][i].idx_board) + 1;
+    }
+}
+
 void printImageBoard(void){
     for(int i=0;i<=tree.how_many_nodes;i++){
         for(int j=0;j<tree.len_node[i];j++){
