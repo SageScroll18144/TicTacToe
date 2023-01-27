@@ -26,8 +26,7 @@ void initBoard(void){
     font = LoadFont("fonts/setback.png");
     
     click = LoadSound("sounds/click.mp3");
-    SetSoundVolume(click, 0.5f);
-    
+    SetSoundVolume(click, 0.5f);   
 }
 
 void drawBoard(void){

@@ -59,7 +59,6 @@ void updateMenu(void){
 void drawMenu(void){
     DrawTextEx(font_, title, position, font_.baseSize*3.0f , 1.0f, BLACK);
     if (menu_pos == 0){
-
         DrawRectangle(80, 170, 250, 40, BLACK);
         DrawRectangle(80, 240, 250, 40, WHITE);
             
