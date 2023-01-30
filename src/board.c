@@ -190,16 +190,16 @@ int algorithm(int node, int depth, int isMaximizing){
 }
 
 Vector2 IAMachine(void){
-    buildGraph(4);
+    buildGraph(3);
 
-    int ans = algorithm(0, 4, 0);
+    int ans = algorithm(0, 3, 1);
     int son, how_nodes = INT32_MAX;
 
     Board ans_board;
     for(int i = 0; i < howManyChildHasSubSet(0);i++){
         if(ans == getNodeWeight(getSon(0, i))){
             son = heightNode(getIdxOfNode(0, i));
-            printf("-> %d\n", son);
+            //printf("-> %d\n", son);
             if(son < how_nodes){
                 how_nodes = son;
                 ans_board = getBoard(0, i); 
